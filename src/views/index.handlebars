@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Products</h1>
+    {{#each products}}
+    <div>
+        <h2><a href="/products/{{id}}">{{name}}</a></h2>
+        <p>{{description}}</p>
+        <p>Price: ${{price}}</p>
+        {{#if imageUrl}}
+        <img src="{{imageUrl}}" alt="{{name}}" width="200">
+        {{/if}}
+    </div>
+    {{/each}}
+    <hr>
+    <form action="/products" method="POST">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" rows="3"></textarea>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="number" name="price" step="0.01" required>
+        </div>
+        <div>
+            <label for="imageUrl">Image URL:</label>
+            <input type="text" name="imageUrl">
+        </div>
+        <button type="submit">Create Product</button>
+    </form>
+
+</body>
+</html>
